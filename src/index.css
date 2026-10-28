@@ -1,0 +1,140 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-milk: #FFFCF7;
+    --color-plum: #542744;
+    --color-orange: #F4A340;
+    --color-pale-plum: #F5EDF3;
+    --color-text-primary: #29232C;
+    --color-text-secondary: #77717A;
+    --color-border: #EDE5E8;
+  }
+
+  html {
+    background-color: #FFFCF7;
+    color: #29232C;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Manrope', 'Inter', sans-serif;
+    letter-spacing: -0.02em;
+    color: #542744;
+  }
+
+  /* High contrast focus ring for WCAG 2.2 AA accessibility */
+  *:focus-visible {
+    outline: 2px solid #542744;
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+}
+
+/* Custom Scrollbar in Warm Plum Tones */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FFFCF7;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #DBCBD6;
+  border-radius: 6px;
+  border: 2px solid #FFFCF7;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #A984A1;
+}
+
+/* Signature Drifting Mist Keyframes */
+@keyframes mist-drift-1 {
+  0% {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+    opacity: 0.45;
+  }
+  50% {
+    transform: translate(60px, -30px) rotate(3deg) scale(1.08);
+    opacity: 0.65;
+  }
+  100% {
+    transform: translate(-40px, 40px) rotate(-2deg) scale(0.96);
+    opacity: 0.45;
+  }
+}
+
+@keyframes mist-drift-2 {
+  0% {
+    transform: translate(0, 0) rotate(0deg) scale(1.05);
+    opacity: 0.35;
+  }
+  50% {
+    transform: translate(-50px, 45px) rotate(-4deg) scale(0.95);
+    opacity: 0.55;
+  }
+  100% {
+    transform: translate(45px, -25px) rotate(2deg) scale(1.1);
+    opacity: 0.35;
+  }
+}
+
+@keyframes particle-drift {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.85;
+  }
+  85% {
+    opacity: 0.85;
+  }
+  100% {
+    transform: translateY(-90px) translateX(25px);
+    opacity: 0;
+  }
+}
+
+.anim-mist-1 {
+  animation: mist-drift-1 32s ease-in-out infinite alternate;
+}
+
+.anim-mist-2 {
+  animation: mist-drift-2 40s ease-in-out infinite alternate;
+}
+
+.anim-particle {
+  animation: particle-drift 8s ease-in-out infinite;
+}
+
+/* Pathway Dash Flow */
+@keyframes pathway-dash {
+  to {
+    stroke-dashoffset: -120;
+  }
+}
+
+.pathway-flowing-stroke {
+  stroke-dasharray: 6 6;
+  animation: pathway-dash 22s linear infinite;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .anim-mist-1, .anim-mist-2, .anim-particle, .pathway-flowing-stroke {
+    animation: none !important;
+  }
+}

@@ -1,0 +1,7 @@
+# You Aspirant robots.txt
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /student/
+
+Sitemap: https://youaspirant.com/sitemap.xml
